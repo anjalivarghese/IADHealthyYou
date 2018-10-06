@@ -1,0 +1,36 @@
+﻿@model IEnumerable<HealthyYou_V2.Models.Recipe>
+
+@{
+    ViewBag.Title = "ViewRecipe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Recipes</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RecipeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Calper100gram)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Calper100gram)
+            </td>
+            <td>
+                @Html.ActionLink("Add to planner", "MakePlanner", new { id = item.ID }) |
+
+            </td>
+        </tr>
+    }
+
+</table>
