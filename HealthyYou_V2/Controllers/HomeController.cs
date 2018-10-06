@@ -67,7 +67,7 @@ namespace HealthyYou_V2.Controllers
             {
                 if (app.OnDate.Date == plannerViewModel.OnDate.Date && app.RecipeID == plannerViewModel.RecipeID)
                 {
-                    return RedirectToAction("Cannot Add to Planner");
+                    return RedirectToAction("CannotAddtoPlanner");
                 }
             }
             var planner = new Planner()
@@ -76,13 +76,13 @@ namespace HealthyYou_V2.Controllers
                 RecipeID = plannerViewModel.RecipeID,
                 OnDate = plannerViewModel.OnDate,
                 Weight = plannerViewModel.Weight,
-
+                Calconsumed = plannerViewModel.Weight * context.Recipes.FirstOrDefault(a => a.ID == plannerViewModel.RecipeID).Calper100gram,
             };
 
             context.Planner.Add(planner);
             context.SaveChanges();
 
-            return View(plannerViewModel);
+            return RedirectToAction("ViewRecipes");
         }
 
             public ActionResult Planner()

@@ -36,10 +36,10 @@ namespace HealthyYou_V2
                 //Here we create a Admin super user who will maintain the website                   
 
                 var user = new ApplicationUser();
-                user.UserName = "Admin";
-                user.Email = "admin@gmail.com";
+                user.UserName = "manager@gmail.com";
+                user.Email = "manager@gmail.com";
 
-                string userPWD = "Admin@123";
+                string userPWD = "Manager@123";
 
                 var chkUser = UserManager.Create(user, userPWD);
 

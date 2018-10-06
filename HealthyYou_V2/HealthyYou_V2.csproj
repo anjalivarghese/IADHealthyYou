@@ -342,6 +342,7 @@
     <Content Include="Views\Home\ViewGyms.cshtml" />
     <Content Include="Views\Home\WriteReview.cshtml" />
     <Content Include="Views\Home\ViewReview.cshtml" />
+    <Content Include="Views\Home\CannotAddtoPlanner.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

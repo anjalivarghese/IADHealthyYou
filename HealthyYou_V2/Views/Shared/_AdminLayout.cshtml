@@ -1,12 +1,4 @@
-﻿
-@{
-    ViewBag.Title = "_AdminLayout";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
-}
-
-<h2>AdminLayout</h2>
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -14,6 +6,7 @@
     <title>@ViewBag.Title - HealthyYou</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
 
 </head>
 <body>
@@ -25,13 +18,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("HealthYou", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("HealthyYou", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("View Recipes", "Index", "Recipes")</li>
-                    <li>@Html.ActionLink("View Customers", "ViewCustomer", "Admin")</li>
                     <li>@Html.ActionLink("View Gyms", "Index", "Gyms")</li>
+                    <li>@Html.ActionLink("View Customer", "ViewCustomer", "Admin")</li>
                     <li>@Html.ActionLink("View Reviews", "ViewReviews", "Admin")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -39,16 +32,21 @@
         </div>
     </div>
     <div class="container body-content">
+        <div class="jumbotron">
+            <h1>Healthy You</h1>
+            <p class="lead">Healthy You</p>
+
+        </div>
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - HealthyYou</p>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
-
