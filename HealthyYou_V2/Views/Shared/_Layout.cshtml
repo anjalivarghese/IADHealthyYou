@@ -1,9 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - HealthyYou</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
@@ -31,11 +28,6 @@
         </div>
     </div>
     <div class="container body-content">
-        <div class="jumbotron">
-            <h1>Healthy You</h1>
-            <p class="lead">Healthy You</p>
-
-        </div>
         @RenderBody()
         <hr />
         <footer>
@@ -49,3 +41,5 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+
