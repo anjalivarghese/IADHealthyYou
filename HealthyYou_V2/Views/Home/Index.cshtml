@@ -1,62 +1,67 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body background="https://i.imgur.com/0I7G9yD.jpg">
-
-<div class="row">
-    <div class="col-md-4">
-        <a href="/Home/ViewRecipes" class="Button">Start Planning</a>
-        <p>Use our planner to begin your journey to leading an healthy life </p>
-        <a><img class="img-responsive" src="https://i.imgur.com/YxCpVDr.jpg" title="source: imgur.com" width="460" height="345" /></a>
-    </div>
-    <div class="col-md-8">
-        <h1 align="center" font size="60" face="Georgia Header">Healthy You</h1>       
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <a href="/Home/Planner" class="Button">View Planner</a>
-        <p>
-            View your planner and calorie intake.
-            Manage your meals everyday
-        </p>
-        <a><img class="img-responsive" src="https://i.imgur.com/NOdRojB.jpg" title="source: imgur.com" width="460" height="370" /></a>
-    </div>
-    <div class="col-md-8">
-        <p class="lead" font face="verdana" >Healthy You helps to plan your meals by monitoring your calorie intake . Through Healthy You , we make Australia happier and healthier</p>
-    </div>
-</div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <a href="/Home/ViewGyms" class="Button">Gyms</a>
-            <p>
-                Know which Gym to join using our Gym feedback.
-                Find the right Gym for you
-            </p>
-            <a><img class="img-responsive" src="https://i.imgur.com/R96sexu.jpg" title="source: imgur.com" width="460" height="380" /></a>
-        </div>
-    </div>
-
+    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
-        .jumbotron {
-            background-color: transparent !important;
+        .mySlides {
+            display: none;
         }
 
-        .col-md-4 {
-            background-color: black;
-            width: 300px;
+        .col-md-8 {
+            width: 900px;
             padding: 25px;
             margin: 25px;
-            color: white;
+            color: black;
         }
+
+        .w3-center{
+            font-size: 100px;
+            color:black;
+            font-family:Centaur;
+        }
+
+        .lead {
+            font-size: 25px;
+            color: black;
+            font-family:SimSun;
+        }
+
     </style>
+</head>
+
+<body>
+
+    <h2 class="w3-center"><b>Healthy You</b></h2>
+    <div class="row">
+        <div col-md-12>
+            <p class="lead">Healthy You helps to plan your meals by monitoring your calorie intake . Through Healthy You , we make Australia happier and healthier.</p>
+        </div>
+    </div>
+    <div class="w3-content w3-section">
+        <img class="mySlides" src="https://i.imgur.com/evgPaxC.jpg" style="width:100%">
+        <img class="mySlides" src="https://i.imgur.com/YxCpVDr.jpg" style="width:100%">
+        <img class="mySlides" src="https://i.imgur.com/R96sexu.jpg" style="width:100%">
+    </div>
+    <script>
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) { myIndex = 1 }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel, 2000); // Change image every 2 seconds
+        }
+    </script>
+
 </body>
+</html>
+

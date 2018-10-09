@@ -28,6 +28,18 @@ namespace HealthyYou_V2.Controllers
             return View();
         }
 
+        public ActionResult CannotAddtoPlanner()
+        {
+
+            return View();
+        }
+
+        public ActionResult FirstPage()
+        {
+
+            return View();
+        }
+
 
         [Authorize]
         public ActionResult ViewGyms()
