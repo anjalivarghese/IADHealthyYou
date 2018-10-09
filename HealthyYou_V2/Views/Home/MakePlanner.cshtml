@@ -12,55 +12,43 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.RecipeID)
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.RecipeID)
 
 
 
-        <div class="form-group">
-            @Html.Label("Recipe Name", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <p>@Html.DisplayFor(model => model.RecipeName)</p>
+    <div class="form-group">
+        @Html.Label("Recipe Name", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <p>@Html.DisplayFor(model => model.RecipeName)</p>
 
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class='col-sm-6'>
-                    <div class="form-group">
-                        <div class='input-group date' id='datetimepicker1'>
-                            <input type='text' class="form-control" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <script type="text/javascript">
-                    $(function () {
-                        $('#datetimepicker1').datetimepicker();
-                    });
-                </script>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.Label("Enter Weight", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-
-                <input type="text" name="Weight">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Add to Plan" class="btn btn-default" />
-            </div>
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.Label("Select Date and Time", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+
+            <input type="datetime-local" name="OnDate">
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Enter Weight", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+
+            <input type="text" name="Weight">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Add to Plan" class="btn btn-default" />
+        </div>
+    </div>
+</div>
 }
 
 <div>
