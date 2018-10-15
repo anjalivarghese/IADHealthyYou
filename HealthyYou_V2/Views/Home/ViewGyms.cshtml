@@ -4,17 +4,18 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2> Gym Location </h2>
+
+<h2>Index</h2>
+
 <div id="map" style="height:300px"></div>
 <br />
-
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Location)
+            @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Latitude)
@@ -24,6 +25,7 @@
         </th>
         <th></th>
     </tr>
+
     @foreach (var item in Model)
     {
         <tr class="coordinates">
@@ -31,20 +33,21 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td class="description">
-                @Html.DisplayFor(modelItem => item.Location)
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
-            <td class="description">
+            <td class="latitude">
                 @Html.DisplayFor(modelItem => item.Latitude)
             </td>
-            <td class="description">
+            <td class="longitude">
                 @Html.DisplayFor(modelItem => item.Longitude)
             </td>
             <td>
-                @Html.ActionLink("View Reviews", "ViewReview", new { id = item.ID }) |
                 @Html.ActionLink("Write Review", "WriteReview", new { id = item.ID }) |
+                @Html.ActionLink("View Review", "ViewReview", new { id = item.ID }) |
             </td>
         </tr>
     }
+
 </table>
 
 @section Scripts {

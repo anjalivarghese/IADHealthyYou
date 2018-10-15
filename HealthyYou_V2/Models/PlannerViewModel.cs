@@ -6,8 +6,7 @@ using System.Web;
 namespace HealthyYou_V2.Models
 {
     public class PlannerViewModel
-    {
-       
+    {      
         public int RecipeID { get; set; }
         public string RecipeName { get; set; }
         public Decimal Weight { get; set; }

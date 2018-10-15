@@ -1,12 +1,12 @@
 ﻿using HealthyYou_V2.Models;
 using Microsoft.AspNet.Identity;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
-using System.Net;
 using System.Web.Mvc;
-using System.Data.Entity;
 
 namespace HealthyYou_V2.Controllers
 {
@@ -39,13 +39,11 @@ namespace HealthyYou_V2.Controllers
         [Authorize]
         public ActionResult ViewGyms()
         {
-
             return View(context.Gym.ToList());
         }
 
         public ActionResult ViewRecipes()
         {
-
             return View(context.Recipes.ToList());
         }
 
@@ -62,37 +60,37 @@ namespace HealthyYou_V2.Controllers
 
         [HttpPost]
         public ActionResult MakePlanner(PlannerViewModel plannerViewModel, int id)
-        {
+       {
             if (!ModelState.IsValid)
-            {
-                return View(new { Id = id });
-            }
+           {
+               return View(new { Id = id });
+           }
 
-            var customerId = GetCustomerId();
-            var customerApps = context.Planner.Where(a => a.CustomerID == customerId).ToList();
+           var customerId = GetCustomerId();
+           var customerApps = context.Planner.Where(a => a.CustomerID == customerId).ToList();
             foreach (var app in customerApps)
             {
                 if (app.OnDate.Date == plannerViewModel.OnDate.Date && app.RecipeID == plannerViewModel.RecipeID)
                 {
-                    return RedirectToAction("CannotAddtoPlanner");
-                }
+                   return RedirectToAction("CannotAddtoPlanner");
+               }
             }
-            var planner = new Planner()
-            {
+           var planner = new Planner()
+           {
                 CustomerID = customerId,
                 RecipeID = plannerViewModel.RecipeID,
-                OnDate = plannerViewModel.OnDate,
-                Weight = plannerViewModel.Weight,
-                Calconsumed = plannerViewModel.Weight * context.Recipes.FirstOrDefault(a => a.ID == plannerViewModel.RecipeID).Calper100gram,
-            };
+               OnDate = plannerViewModel.OnDate,
+              Weight = plannerViewModel.Weight,
+              Calconsumed = plannerViewModel.Weight * context.Recipes.FirstOrDefault(a => a.ID == plannerViewModel.RecipeID).Calper100gram,
+           };
 
-            context.Planner.Add(planner);
+           context.Planner.Add(planner);
             context.SaveChanges();
 
-            return RedirectToAction("ViewRecipes");
-        }
-
-            public ActionResult Planner()
+           return RedirectToAction("ViewRecipes");
+       }
+        
+        public ActionResult Planner()
             {
                 int customerId = GetCustomerId();
                 return View(context.Planner.Include("Recipe").Where(a => a.CustomerID == customerId).ToList());
