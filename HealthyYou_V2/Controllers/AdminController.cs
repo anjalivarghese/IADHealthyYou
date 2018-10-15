@@ -1,5 +1,6 @@
 ﻿using HealthyYou_V2.Models;
 using Microsoft.AspNet.Identity;
+using HealthyYou_V2.Utils;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using System;
@@ -78,7 +79,9 @@ namespace HealthyYou_V2.Controllers
                 customer.IsActive = true;
             }
             context.SaveChanges();
-            return RedirectToAction("ViewCustomers");
+
+            TempData["customer"] = customer;
+            return RedirectToAction("Send_Email",customer);
         }
 
         public ActionResult ViewReviews()
@@ -100,5 +103,52 @@ namespace HealthyYou_V2.Controllers
             context.SaveChanges();
             return RedirectToAction("ViewReviews");
         }
+
+        public ActionResult Send_Email(Customer customer)
+        {
+            SendEmailViewModel model = new SendEmailViewModel();
+            ViewBag.toEmail = customer.Email;
+            if (customer.IsActive)
+            {
+                ViewBag.Subject = "Healthy You Alert";
+                ViewBag.Contents = "You have been activated";
+            }
+            else
+            {
+                ViewBag.Subject = "Healthy You Alert";
+                ViewBag.Contents = "You have been deactivated";
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Send_Email(SendEmailViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    String toEmail = model.ToEmail;
+                    String subject = model.Subject;
+                    String contents = model.Contents;
+
+                    EmailSender es = new EmailSender();
+                    es.Send(toEmail, subject, contents);
+
+                    ViewBag.Result = "Email has been send.";
+
+                    ModelState.Clear();
+
+                    return RedirectToAction("ViewCustomer");
+                }
+                catch
+                {
+                    return View();
+                }
+            }
+
+            return View();
+        }
+
     }
 }

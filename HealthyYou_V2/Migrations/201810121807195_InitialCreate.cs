@@ -28,6 +28,8 @@ namespace HealthyYou_V2.Migrations
                         ID = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         Location = c.String(),
+                        Latitude = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Longitude = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Customer_ID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)

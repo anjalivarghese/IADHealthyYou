@@ -1,11 +1,12 @@
 ﻿@model IEnumerable<HealthyYou_V2.Models.Gym>
 
 @{
-    ViewBag.Title = "ViewGyms";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Recipes</h2>
+<h2> Gym Location </h2>
+<div id="map" style="height:300px"></div>
+<br />
 
 <table class="table">
     <tr>
@@ -15,17 +16,28 @@
         <th>
             @Html.DisplayNameFor(model => model.Location)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </th>
         <th></th>
     </tr>
-
     @foreach (var item in Model)
     {
-        <tr>
+        <tr class="coordinates">
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td>
+            <td class="description">
                 @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td class="description">
+                @Html.DisplayFor(modelItem => item.Latitude)
+            </td>
+            <td class="description">
+                @Html.DisplayFor(modelItem => item.Longitude)
             </td>
             <td>
                 @Html.ActionLink("View Reviews", "ViewReview", new { id = item.ID }) |
@@ -33,5 +45,8 @@
             </td>
         </tr>
     }
-
 </table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/mapbox")
+}

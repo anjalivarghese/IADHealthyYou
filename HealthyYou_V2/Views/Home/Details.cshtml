@@ -1,0 +1,78 @@
+﻿@model HealthyYou_V2.Models.Customer
+
+@{ 
+    var customer = ViewData.Model;
+
+}
+@{
+                /**/
+
+                ViewBag.Title = "ViewCustomer";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Profile Details</h2>
+
+<div class="details">
+
+    <div class=" row">
+        <div class="col-md-4">
+            <p>Name</p>
+        </div>
+        <div class="col-md-4">
+            @customer.Name
+        </div>
+    </div>
+
+    <div class=" row">
+        <div class="col-md-4">
+            <p>Age</p>
+        </div>
+        <div class="col-md-4">
+            @customer.Age
+        </div>
+    </div>
+
+    <div class=" row">
+        <div class="col-md-4">
+            <p>Email</p>
+        </div>
+        <div class="col-md-4">
+            @customer.Email
+        </div>
+    </div>
+
+    <div class=" row">
+        <div class="col-md-4">
+            <p>Height</p>
+        </div>
+        <div class="col-md-4">
+            @customer.Height
+        </div>
+    </div>
+
+    <div class=" row">
+        <div class="col-md-4">
+            <p>Weight</p>
+        </div>
+        <div class="col-md-4">
+            @customer.Weight
+        </div>
+    </div>
+
+    <div class=" row">
+        <div class="col-md-4">
+            <p>Body Mass Index</p>
+        </div>
+        <div class="col-md-4">
+            @ViewBag.BMI
+        </div>
+    </div>
+
+    <div>
+        @Html.ActionLink("Back to List", "Profile")
+    </div>
+
+</div>
+
+

@@ -4,8 +4,9 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Net;
 using System.Web.Mvc;
-
+using System.Data.Entity;
 
 namespace HealthyYou_V2.Controllers
 {
@@ -29,12 +30,6 @@ namespace HealthyYou_V2.Controllers
         }
 
         public ActionResult CannotAddtoPlanner()
-        {
-
-            return View();
-        }
-
-        public ActionResult FirstPage()
         {
 
             return View();
@@ -110,6 +105,16 @@ namespace HealthyYou_V2.Controllers
             return context.Customers.FirstOrDefault(c => c.Email == customerEmail).ID;
         }
 
+        public ActionResult Details()
+        {
+            int id = GetCustomerId();
+            Customer customer = context.Customers.Find(id);
+            decimal H = (customer.Height) / 100;
+            decimal BMI = Math.Round(customer.Weight / (H*H));
+            ViewBag.BMI = BMI;
+            return View(customer);
+        }
+
         public ActionResult WriteReview(int id)
         {
             return View();
@@ -137,6 +142,11 @@ namespace HealthyYou_V2.Controllers
             return View(context.Reviews.Include("Gym").Include("Customer").Where(r => r.GymID == id).ToList());
         }
 
-
+        [HttpGet]
+        public ActionResult Edit()
+        {
+            return View();
+        }
+       
     }
 }

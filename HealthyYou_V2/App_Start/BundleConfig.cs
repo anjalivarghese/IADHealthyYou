@@ -27,6 +27,9 @@ namespace HealthyYou_V2
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.darkly.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/mapbox").Include(
+             "~/Scripts/location.js"));
         }
     }
 }
