@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    @Scripts.Render("~/bundles/jquery")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @* This is for the mapbox map. *@
@@ -13,6 +14,8 @@
           type='text/css' />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
     <script src='https://www.google.com/recaptcha/api.js'></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -24,16 +27,16 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("HealthyYou", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Start Planning", "ViewRecipes", "Home")</li>
-                    <li>@Html.ActionLink("View Planner", "Planner", "Home")</li>
-                    <li>@Html.ActionLink("Gym", "ViewGyms", "Home")</li>
-                    <li>@Html.ActionLink("Profile","Details", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+            </div>   
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Start Planning", "ViewRecipes", "Home")</li>
+                        <li>@Html.ActionLink("View Planner", "Planner", "Home")</li>
+                        <li>@Html.ActionLink("Gym", "ViewGyms", "Home")</li>
+                        <li>@Html.ActionLink("Profile", "Details", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
         </div>
     </div>
     <div class="container body-content">
@@ -46,7 +49,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

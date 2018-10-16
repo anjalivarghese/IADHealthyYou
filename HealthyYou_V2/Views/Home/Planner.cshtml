@@ -26,19 +26,27 @@
 
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Recipe.RecipeName)
-        </td>
-        <td>
-            <p>@item.OnDate.ToShortDateString()</p>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Weight)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Calconsumed)
-        </td>
-    </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Recipe.RecipeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OnDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Calconsumed)
+            </td>
+        </tr>      
     }
 </table>
+<div class=" row">
+    <div class="col-md-8">
+        <p>Total Calories Consumed</p>
+    </div>
+    <div class="col-md-offset-4">
+        @ViewBag.total
+    </div>
+</div>

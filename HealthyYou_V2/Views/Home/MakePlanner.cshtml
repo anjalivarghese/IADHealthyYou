@@ -1,6 +1,6 @@
 ﻿@model HealthyYou_V2.Models.PlannerViewModel
 @Scripts.Render("~/bundles/jquery")
-
+<link rel="stylesheet" type="text/css" media="all" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css" />
 @{
     ViewBag.Title = "Make a plan";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -23,59 +23,38 @@
         @Html.Label("Recipe Name", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             <p>@Html.DisplayFor(model => model.RecipeName)</p>
-
         </div>
     </div>
 
     <div class="form-group">
         @Html.Label("Select Date", htmlAttributes: new { @class = "control-label col-md-2" })
-        <input type="text" name="OnDate">
-        <div class="input-group-addon">
-            <span class="glyphicon glyphicon-th datepicker"></span> 
-        </div>
+        <input type="text" name="OnDate" id="datepicker">
     </div>
 
-        <div class="form-group">
-            @Html.Label("Enter Weight", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="text" name="Weight">
-            </div>
-        </div>
+    <div class="form-group">
+        @Html.Label("Enter Weight", htmlAttributes: new { @class = "control-label col-md-2" })
+        <input type="text" name="Weight">
+    </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Add to Plan" class="btn btn-default" />
-            </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Add to Plan" class="btn btn-default" />
         </div>
     </div>
-    }
+</div>
+}
 
-    <div>
-        @Html.ActionLink("Back to List", "ViewRecipes")
-    </div>
+<div>
+    @Html.ActionLink("Back to List", "ViewRecipes")
+</div>
 
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
-
-<script src="~/Scripts/bootstrap-datepicker.js"></script>
     <script>
-
-        $(document).ready(function () {
-            $('#OnDate').datepicker({
-                format: 'dd-M-yy',
-                startDate: '0d',
-                autoclose: true,
-                todayHighlight: true,
-                setDate: new Date()
+        $(function () {
+            $('#datepicker').datepicker({
             });
-            $('.picker').click(function (planner) {
-                planner.preventDefault();
-                $('#OnDate').focus();
-            });
-        })
-
-
+        });
     </script>
-
 }
 

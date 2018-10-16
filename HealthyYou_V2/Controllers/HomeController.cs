@@ -47,6 +47,7 @@ namespace HealthyYou_V2.Controllers
             return View(context.Recipes.ToList());
         }
 
+        [HttpGet]
         public ActionResult MakePlanner(string id)
         {
             int a = Convert.ToInt32(id);
@@ -59,18 +60,13 @@ namespace HealthyYou_V2.Controllers
         }
 
         [HttpPost]
-        public ActionResult MakePlanner(PlannerViewModel plannerViewModel, int id)
+        public ActionResult MakePlanner(PlannerViewModel plannerViewModel)
        {
-            if (!ModelState.IsValid)
-           {
-               return View(new { Id = id });
-           }
-
            var customerId = GetCustomerId();
            var customerApps = context.Planner.Where(a => a.CustomerID == customerId).ToList();
             foreach (var app in customerApps)
             {
-                if (app.OnDate.Date == plannerViewModel.OnDate.Date && app.RecipeID == plannerViewModel.RecipeID)
+                if (app.OnDate.ToString().Equals(plannerViewModel.OnDate.ToString()) && app.RecipeID == plannerViewModel.RecipeID)
                 {
                    return RedirectToAction("CannotAddtoPlanner");
                }
@@ -92,8 +88,15 @@ namespace HealthyYou_V2.Controllers
         
         public ActionResult Planner()
             {
-                int customerId = GetCustomerId();
-                return View(context.Planner.Include("Recipe").Where(a => a.CustomerID == customerId).ToList());
+            int customerId = GetCustomerId();
+            decimal total = 0; 
+            var plan = context.Planner.Where(a => a.CustomerID == customerId).ToList();
+            foreach (var entry in plan)
+            {
+                total = total + entry.Calconsumed;
+            }
+            ViewBag.total = total;
+            return View(context.Planner.Include("Recipe").Where(a => a.CustomerID == customerId).ToList());               
             }
 
         private int GetCustomerId()
@@ -125,6 +128,8 @@ namespace HealthyYou_V2.Controllers
             {
                 return View(new { Id = id });
             }
+
+
             review.GymID = id;
             review.CustomerID = GetCustomerId();
             review.OnDate = DateTime.Now;
