@@ -13,7 +13,7 @@ namespace HealthyYou_V2.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201810161122386_InitialCreate"; }
+            get { return "201810201021283_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

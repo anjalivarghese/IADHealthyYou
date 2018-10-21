@@ -43,7 +43,7 @@ namespace HealthyYou_V2.Migrations
                         ID = c.Int(nullable: false, identity: true),
                         CustomerID = c.Int(nullable: false),
                         RecipeID = c.Int(nullable: false),
-                        OnDate = c.String(),
+                        OnDate = c.DateTime(nullable: false),
                         Weight = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Calconsumed = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })

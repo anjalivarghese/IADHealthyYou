@@ -219,9 +219,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201810161122386_InitialCreate.cs" />
-    <Compile Include="Migrations\201810161122386_InitialCreate.Designer.cs">
-      <DependentUpon>201810161122386_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201810201021283_InitialCreate.cs" />
+    <Compile Include="Migrations\201810201021283_InitialCreate.Designer.cs">
+      <DependentUpon>201810201021283_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -296,6 +296,7 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -312,8 +313,12 @@
     <Content Include="Contents\bootstrap-datepicker3.css.map" />
     <Content Include="Contents\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Contents\bootstrap-datepicker.css.map" />
+    <Content Include="Content\_bootstrap-datetimepicker.less" />
+    <None Include="Properties\PublishProfiles\HealthyYouV220181019092438 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Myvm - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\myVM - Web Deploy1.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -409,6 +414,11 @@
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-TW.min.js" />
     <Content Include="Scripts\location.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\script-custom-editor.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -481,8 +491,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810161122386_InitialCreate.resx">
-      <DependentUpon>201810161122386_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810201021283_InitialCreate.resx">
+      <DependentUpon>201810201021283_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

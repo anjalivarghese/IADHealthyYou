@@ -1,6 +1,5 @@
 ﻿@model HealthyYou_V2.Models.PlannerViewModel
-@Scripts.Render("~/bundles/jquery")
-<link rel="stylesheet" type="text/css" media="all" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/smoothness/jquery-ui.css" />
+
 @{
     ViewBag.Title = "Make a plan";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,49 +11,85 @@
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.RecipeID)
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.RecipeID)
 
 
 
-    <div class="form-group">
-        @Html.Label("Recipe Name", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <p>@Html.DisplayFor(model => model.RecipeName)</p>
+        <div class="form-group">
+            @Html.Label("Recipe Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <p>@Html.DisplayFor(model => model.RecipeName)</p>
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.Label("Select Date", htmlAttributes: new { @class = "control-label col-md-2" })
-        <input type="text" name="OnDate" id="datepicker">
-    </div>
-
-    <div class="form-group">
-        @Html.Label("Enter Weight", htmlAttributes: new { @class = "control-label col-md-2" })
-        <input type="text" name="Weight">
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Add to Plan" class="btn btn-default" />
+        <div class="form-group">
+            @Html.LabelFor(model => model.OnDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class=" input-group">
+                    @Html.EditorFor(model => model.OnDate, new { htmlAttributes = new { @class = "form-control" , @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.OnDate, "", new { @class = "text-danger" })
+                    <span class=" input-group-addon">
+                        <span class=" glyphicon glyphicon-calendar new-datepicker"></span>
+                    </span>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+
+        <div class="form-group">
+            @Html.Label("Enter Weight", htmlAttributes: new { @class = "control-label col-md-2", @readonly = "readonly" })
+            <div class="col-md-10">
+                <div class=" input-group1">
+                    @Html.DropDownListFor(model => model.Weight, new SelectList(new[] { "1", "2", "3", "4", "5" }), new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Add to Plan" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
 }
-
 <div>
     @Html.ActionLink("Back to List", "ViewRecipes")
 </div>
 
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $(function () {
-            $('#datepicker').datepicker({
-            });
-        });
-    </script>
-}
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        var date_input = $('input[id="OnDate"]'); //our date input has the name "date"
+        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+        var options = {
+            dateFormat: 'dd-M-yy',
+            maxDate: 'today',
+            minDate: 'today-1',
+            useCurrent: true,
+            todayHighlight: true,
+            autocompelete: false,
+            autoclose: true,
+        };
+        date_input.datepicker(options);
+        $('.new-datepicker').datepicker("setDate", 'today');
+    })
+
+    $('.new-datepicker').click(function (event) {
+        event.preventDefault();
+        $('#OnDate').focus();
+    });
+
+</script>
+}

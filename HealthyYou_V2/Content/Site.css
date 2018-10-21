@@ -22,3 +22,11 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.input-group {
+    max-width: 400px;
+}
+
+.input-group1 {
+    max-width: 600px;
+}

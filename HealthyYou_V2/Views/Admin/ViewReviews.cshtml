@@ -49,7 +49,7 @@
                 @Html.DisplayFor(modelItem => item.Rating)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ReviewText)
+                @Html.Raw(item.ReviewText)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OnDate)

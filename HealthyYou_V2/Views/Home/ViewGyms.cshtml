@@ -28,24 +28,24 @@
 
     @foreach (var item in Model)
     {
-        <tr class="coordinates">
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td class="description">
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td class="latitude">
-                @Html.DisplayFor(modelItem => item.Latitude)
-            </td>
-            <td class="longitude">
-                @Html.DisplayFor(modelItem => item.Longitude)
-            </td>
-            <td>
-                @Html.ActionLink("Write Review", "WriteReview", new { id = item.ID }) |
-                @Html.ActionLink("View Review", "ViewReview", new { id = item.ID }) |
-            </td>
-        </tr>
+    <tr class="coordinates">
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td class="description">
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td class="latitude">
+            @Html.DisplayFor(modelItem => item.Latitude)
+        </td>
+        <td class="longitude">
+            @Html.DisplayFor(modelItem => item.Longitude)
+        </td>
+        <td>
+            @Html.ActionLink("Write Review", "WriteReview", new { id = item.ID }) |
+            @Html.ActionLink("View Review", "ViewReview", new { id = item.ID }) |
+        </td>
+    </tr>
     }
 
 </table>

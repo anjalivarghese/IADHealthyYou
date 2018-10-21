@@ -60,32 +60,33 @@ namespace HealthyYou_V2.Controllers
         }
 
         [HttpPost]
-        public ActionResult MakePlanner(PlannerViewModel plannerViewModel)
-       {
-           var customerId = GetCustomerId();
-           var customerApps = context.Planner.Where(a => a.CustomerID == customerId).ToList();
+        [ValidateAntiForgeryToken]
+        public ActionResult MakePlanner([Bind(Include = "ID,RecipeID,OnDate,Weight")]PlannerViewModel plannerViewModel)
+        {
+            var customerId = GetCustomerId();
+            var customerApps = context.Planner.Where(a => a.CustomerID == customerId).ToList();
             foreach (var app in customerApps)
             {
-                if (app.OnDate.ToString().Equals(plannerViewModel.OnDate.ToString()) && app.RecipeID == plannerViewModel.RecipeID)
+                if (app.OnDate == plannerViewModel.OnDate && app.RecipeID == plannerViewModel.RecipeID)
                 {
-                   return RedirectToAction("CannotAddtoPlanner");
-               }
+                    return RedirectToAction("CannotAddtoPlanner");
+                }
             }
-           var planner = new Planner()
-           {
+            var planner = new Planner()
+            {
                 CustomerID = customerId,
                 RecipeID = plannerViewModel.RecipeID,
-               OnDate = plannerViewModel.OnDate,
-              Weight = plannerViewModel.Weight,
-              Calconsumed = plannerViewModel.Weight * context.Recipes.FirstOrDefault(a => a.ID == plannerViewModel.RecipeID).Calper100gram,
-           };
+                OnDate = plannerViewModel.OnDate,
+                Weight = plannerViewModel.Weight,
+                Calconsumed = plannerViewModel.Weight * context.Recipes.FirstOrDefault(a => a.ID == plannerViewModel.RecipeID).Calper100gram,
+            };
 
-           context.Planner.Add(planner);
+            context.Planner.Add(planner);
             context.SaveChanges();
 
-           return RedirectToAction("ViewRecipes");
-       }
-        
+            return RedirectToAction("ViewRecipes");
+        }
+
         public ActionResult Planner()
             {
             int customerId = GetCustomerId();

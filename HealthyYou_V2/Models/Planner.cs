@@ -15,7 +15,7 @@ namespace HealthyYou_V2.Models
         [ForeignKey("Recipe")]
         public int RecipeID { get; set; }
         public Recipe Recipe { get; set; }
-        public String OnDate { get; set; }
+        public DateTime OnDate { get; set; }
         public Decimal Weight { get; set; }
         public Decimal Calconsumed { get; set; }
     }

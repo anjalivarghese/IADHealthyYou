@@ -12,28 +12,28 @@
 
 <h2>Write Review</h2>
 
-<div class="row">
     <div class="col-md-12">
         <section id="loginForm">
             @using (Html.BeginForm("WriteReview", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
-                <h5> <i class="fa fa-link" aria-hidden="true"> </i> <a href="http://summernote.org/"> Summernote Rich Text WYSIWYG Editor </a> </h5> <hr /> <div class="form-group">
-
-                    <div class="form-group col-md-12">
+                <h5> <i class="fa fa-link" aria-hidden="true"> </i> <a href="http://summernote.org/"> Summernote Rich Text WYSIWYG Editor </a> </h5> <hr />
+            <div class="form-group row">
+                    <div class="form-group col-md-4">
                         @Html.LabelFor(model => model.Rating, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.Rating, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.DropDownListFor(model => model.Rating, new SelectList(new[] { "1", "2", "3", "4", "5","6","7","8","9","10" }), new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.Rating, "", new { @class = "text-danger" })
                             <small class="text-danger">Rating between 1 to 10</small>
                         </div>
                     </div>
                     <hr />
-                    <div class="input-group">
-                        <label class="col-md-12 control-label"> Your Review </label> <div class="col-md-12">
+                    <div class="input-group1">
+                        <label class="col-md-12 control-label"> </label> <div class="col-md-12">
+                        <b>Enter Your Review</b>
                             @Html.TextAreaFor(m => m.ReviewText, new
                     {
-                        rows = "20",
-                        style = "resize:none;width:400px;",
+                        rows = "3",
+                        style = "resize:none;width:600px;",
                         placeholder = Html.DisplayNameFor(m => m.ReviewText),
                         @class = "form-control input-lg textarea-editor"
                     })
@@ -42,13 +42,12 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
+                    <div class="col-md-10">
                         <input type="submit" value="Create" class="btn btn-primary" />
                     </div>
                 </div>
             }
         </section>
     </div>
-</div>
 
 
